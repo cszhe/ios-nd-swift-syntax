@@ -25,6 +25,6 @@ let yearsOfTheGoat = [1967, 1979, 1991, 2003, 2015]
 let yearsOfTheSheep = [1967, 1979, 1991, 2003, 2015]
 //yearsOfTheGoat = yearsOfTheSheep
 //: ### Two ways of being immutable - #2 Value alteration
-//yearsOfTheGoat.append(2027)
+yearsOfTheGoat.append(2027)
 
 
