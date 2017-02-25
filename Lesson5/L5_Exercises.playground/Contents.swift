@@ -5,14 +5,34 @@ import UIKit
 //: __Problem 1.__
 //:
 //:Earlier we used the method, removeAtIndex() to remove the first letter of a string. This method belongs to the String class. See if you can use this same method to return the last letter of a string.
-
+func lastLetter(ofString: String) -> Character {
+    
+    if let last = ofString.characters.last {
+        return last
+    } else {
+        print("error")
+    }
+    return "".characters.first!
+}
 //:Test out your discovery below by returning the last letter of the String, "bologna".
 var word = "bologna"
+
+lastLetter(ofString: word)
 
 //: __Problem 2__
 //:
 //: Write a function called combineLastCharacters. It should take in an array of strings, collect the last character of each string and combine those characters to make a new string to return. Use the strategy you discovered in Problem 1 along with a for-in loop to write combineLastCharacters. Then try it on the nonsenseArray below.
 var nonsenseArray = ["bungalow", "buffalo", "indigo", "although", "Ontario", "albino", "%$&#!"]
+
+func combineLastCharacters(ofArray: Array<String>) ->String {
+    var ret = String()
+    for a in ofArray {
+        ret.append(a.characters.last!)
+    }
+    return ret
+}
+
+combineLastCharacters(ofArray: nonsenseArray)
 
 //: __Problem 3__
 //:
@@ -26,10 +46,28 @@ var nonsenseArray = ["bungalow", "buffalo", "indigo", "although", "Ontario", "al
 
 let digits = CharacterSet.decimalDigits
 
+func signature(string: String) -> Bool {
+    return digits.isSuperset(of: CharacterSet(charactersIn: string)) ? true : false
+}
+
+signature(string: "hello")
+signature(string: "321")
+
 //: __Problem 4__
 //:
 //: Write a function that takes in an array of dirtyWord strings, removes all of the four-letter words, and returns a clean array.
 let dirtyWordsArray = ["phooey", "darn", "drat", "blurgh", "jupiters", "argh", "fudge"]
+
+func removeDirty(oldArray: Array<String>) -> Array<String> {
+    var clean = Array<String>()
+    for a in oldArray {
+        if !dirtyWordsArray.contains(a) {
+            clean.append(a)
+        }
+    }
+    return clean
+}
+
 
 //: __Problem 5__
 //:
