@@ -5,7 +5,23 @@ protocol DirtyDeeds {
     func steal()
 }
 
-class Minion: DirtyDeeds {
+class Minion: DirtyDeeds, Souschef {
+    internal func rinse(_ vegetable: String) -> String {
+        return ""
+    }
+
+    internal func chop(_ vegetable: String) -> String {
+        return ""
+    }
+
+    internal func steal() {
+        
+    }
+
+    internal func cheat() {
+        
+    }
+
     var name: String
     
     init(name:String) {
@@ -36,6 +52,10 @@ protocol DogWalker {
 }
 
 class Neighbor: DogWalker {
+    internal func throwBall(_ numberOfTimes: Int) -> Int {
+        return 1
+    }
+
     
     func throwBall(_ numberOfTimes:Int) {
         var count = 0

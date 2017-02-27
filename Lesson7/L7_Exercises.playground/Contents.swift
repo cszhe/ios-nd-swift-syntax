@@ -10,7 +10,7 @@ enum Amount {
     case alot
 }
 
-struct EspressoDrink {
+class EspressoDrink {
     let numberOfShots: Int
     var steamedMilk: Amount
     let foam: Bool
@@ -35,75 +35,80 @@ macchiato.steamedMilk
 //: __2b.__
 //: Associate an Int value with each finger.
 
+enum Fingers : Int{
+    case thumb = 1, index, middle, ring, little
+}
+
+
 //: __Problem 3__
 //:
 //: Enum, class, or struct?
 //:
 //: Uncomment the code below and choose whether each type should be an enum, class, or struct.
-//____ Window {
-//    let height: Double
-//    let width: Double
-//    var open: Bool
-//}
+struct Window {
+    let height: Double
+    let width: Double
+    var open: Bool
+}
 
-//____ WritingImplement {
-//    case pen
-//    case pencil
-//    case marker
-//    case crayon
-//    case chalk
-//}
+enum WritingImplement {
+    case pen
+    case pencil
+    case marker
+    case crayon
+    case chalk
+}
 
-//____ Material {
-//    let name: String
-//    let density: Double
-//    let stiffness: Double
-//}
+struct Material {
+    let name: String
+    let density: Double
+    let stiffness: Double
+}
 
 
-//____ Bicycle {
-//    let frame: Material
-//    let weight: Double
-//    let category: String
-//
-//    static var bikeCategories: [String] = ["Road", "Touring", "Mountain", "Commuter", "BMX"]
-//
-//    func lookCool() {
-//        print("Check out my gear-shifters!")
-//    }
-//}
+struct Bicycle {
+    let frame: Material
+    let weight: Double
+    let category: String
 
-//____ Cyclist {
-//    var speed: Double
-//    let agility: Double
-//    let bike: Bicycle
-//
-//    var maneuverability: Double {
-//        get {
-//            return agility - speed/5
-//        }
-//    }
-//
-//    init(speed: Double, agility: Double, bike: Bicycle) {
-//        self.speed = speed
-//        self.agility = agility
-//        self.bike = bike
-//    }
-//
-//    func brake() {
-//        speed -= 1
-//    }
-//
-//    func pedalFaster(factor: Double) {
-//        speed * factor
-//    }
-//}
+    static var bikeCategories: [String] = ["Road", "Touring", "Mountain", "Commuter", "BMX"]
 
-//____ Size: String {
-//    case small = "8 ounces"
-//    case medium = "12 ounces"
-//    case large = "16 ounces"
-//}
+    func lookCool() {
+        print("Check out my gear-shifters!")
+    }
+}
+
+class Cyclist {
+    var speed: Double
+    let agility: Double
+    let bike: Bicycle
+
+    var maneuverability: Double {
+        get {
+            return agility - speed/5
+        }
+    }
+
+    init(speed: Double, agility: Double, bike: Bicycle) {
+        self.speed = speed
+        self.agility = agility
+        self.bike = bike
+    }
+
+    func brake() {
+        speed -= 1
+    }
+
+    func pedalFaster(factor: Double) {
+        speed * factor
+    }
+}
+
+enum Size: String {
+    case small = "8 ounces"
+    case medium = "12 ounces"
+    case large = "16 ounces"
+}
 
 //: __Problem 4__
 //:
@@ -120,7 +125,23 @@ macchiato.steamedMilk
 
 //: __4d.__
 //: Create an instance of your Cookie struct and call its method.
+struct cookie {
+    var flavor : String
+    var minutesSinceRemovalFromOven : Int
+    
+    var delicious : Int {
+        get {
+            return 100 - minutesSinceRemovalFromOven
+        }
+    }
+    
+    func tempt() -> String {
+        return "Tony is tempt to eat"
+    }
+}
 
+var k = cookie(flavor: "sweet", minutesSinceRemovalFromOven: 3)
+k.tempt()
 //: __Problem 5__
 //:
 //: Write a class to represent a listing for a Bed and Breakfast.
@@ -136,3 +157,31 @@ macchiato.steamedMilk
 
 //: __5d.__
 //: Create an instance of your BnBListing class and call one of its methods.
+enum BBCategory {
+    case house, apartment
+}
+
+class BBList {
+    var category : BBCategory
+    var availability : Bool
+    var owner : String
+    
+    init() {
+        owner = "Jason"
+        availability = true
+        category = .apartment
+    }
+
+    func book() ->Bool {
+        let ret = availability
+        self.availability = false
+        return ret
+    }
+
+}
+
+var airbnb = BBList()
+
+airbnb.book()
+
+
